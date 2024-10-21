@@ -1,20 +1,20 @@
 
-import 'package:agendaflutter2/entidade/contato.dart';
+import 'package:agendaflutter2/entidade/pessoa.dart';
 import 'package:agendaflutter2/repositorio/DaoSqLite.dart';
 import 'package:agendaflutter2/repositorio/interfaceDao.dart';
 
-class ContatoController {
+class Pessoacontroller {
   final InterfaceDao _dao = DaoSqLite();
   List lista = [];
-  salvar(Contato c) {
-    _dao.add(c);
+  salvar(Pessoa p) {
+    _dao.add(p);
   }
 
-  remover(Contato c) {
-    _dao.remove(c);
+  remover(Pessoa p) {
+    _dao.remove(p);
   }
 
-  Future<List<Contato>> listar() {
+  Future<List<Pessoa>> listar() {
     return _dao.dados;
   }
 
@@ -28,7 +28,7 @@ class ContatoController {
     return _dao.dados;
   }
 
-  Future<Contato> get(int indice) async {
+  Future<Pessoa> get(int indice) async {
     lista = await _dao.dados;
     return lista[indice];
   }

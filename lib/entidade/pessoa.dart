@@ -1,9 +1,9 @@
-class Contato {
+class Pessoa {
   String _nome;
   int? _id;
   String _telefone;
   String _email;
-  Contato({id, required nome, required telefone, required email})
+  Pessoa({id, required nome, required telefone, required email})
       : _email = email,
         _nome = nome,
         _telefone = telefone,
@@ -31,8 +31,8 @@ class Contato {
   }
 
   // Construtor de fábrica
-  factory Contato.fromMap(Map<String, dynamic> map) {
-    return Contato(
+  factory Pessoa.fromMap(Map<String, dynamic> map) {
+    return Pessoa(
       id: map['id'],
       nome: map['nome'],
       telefone: map['telefone'],

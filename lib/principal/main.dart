@@ -1,4 +1,7 @@
-import 'package:agendaflutter2/controle/contatocontroller.dart';
+import 'package:agendaflutter2/controle/pessoaController.dart';
+import 'package:agendaflutter2/principal/cadastro.dart';
+import 'package:agendaflutter2/principal/listagem.dart';
+import 'package:agendaflutter2/principal/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,15 +18,16 @@ class App extends StatefulWidget {
 }
 
 class _App extends State<App> {
-  ContatoController controller = new ContatoController();
+  Pessoacontroller controller = new Pessoacontroller();
+
   @override
   Widget build(BuildContext context) {
-    MaterialApp(
-      initialRoute: "login",
+   return MaterialApp(
+      initialRoute: "/listagem",
       routes: {
-        'login': (context) => Login(),
-        '/listagem': (context) => Listagem(controller: controller),
-        '/cadastro': (context) => Cadastro(controller: controller),
+        //'/login': (context) => Login(),
+        '/listagem': (context) => Listagem(pessoaController: controller),
+        '/cadastro': (context) => Cadastro(pessoaController: controller),
       },
     );
   }

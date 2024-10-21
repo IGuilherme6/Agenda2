@@ -1,18 +1,18 @@
-import 'package:agendaflutter2/entidade/contato.dart';
+import 'package:agendaflutter2/entidade/pessoa.dart';
 import 'package:agendaflutter2/repositorio/interfaceDao.dart';
 
 class Dao implements InterfaceDao {
-  final List<Contato> _dados = [];
+  final List<Pessoa> _dados = [];
   @override
-  Future<void> add(Contato contato) async {
-    _dados.add(contato);
+  Future<void> add(Pessoa pessoa) async {
+    _dados.add(pessoa);
   }
 
   @override
-  Future<List<Contato>> get dados async => _dados;
+  Future<List<Pessoa>> get dados async => _dados;
 
   @override
-  Future<int> remove(Contato pessoa) {
+  Future<int> remove(Pessoa pessoa) {
     int index = _dados.indexOf(pessoa);
     if (index != -1) {
       _dados.removeAt(index);
@@ -20,3 +20,4 @@ class Dao implements InterfaceDao {
     return Future.value(index);
   }
 }
+

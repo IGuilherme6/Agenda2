@@ -1,4 +1,4 @@
-import 'package:agendaflutter2/entidade/contato.dart';
+import 'package:agendaflutter2/entidade/pessoa.dart';
 import 'package:agendaflutter2/repositorio/interfaceDao.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -14,24 +14,24 @@ class DaoSqLite implements InterfaceDao {
   }
 
   @override
-  Future<void> add(Contato c) async {
+  Future<void> add(Pessoa pessoa) async {
     final Database db = await initializeDB();
-    await db.insert('pessoas', c.toMap());
+    await db.insert('pessoas', pessoa.toMap());
     db.close();
   }
 
   @override
-  Future<int> remove(Contato c) async {
+  Future<int> remove(Pessoa pessoa) async {
     final Database db = await initializeDB();
-    return await db.delete("pessoas", where: 'id = ?', whereArgs: [c.id]);
+    return await db.delete("pessoas", where: 'id = ?', whereArgs: [pessoa.id]);
   }
 
   @override
-  Future<List<Contato>> get dados async {
+  Future<List<Pessoa>> get dados async {
     final Database db = await initializeDB();
     final List<Map<String, dynamic>> maps = await db.query('pessoas');
     return List.generate(maps.length, (i) {
-      return Contato.fromMap(maps[i]);
+      return Pessoa.fromMap(maps[i]);
     });
   }
 }
